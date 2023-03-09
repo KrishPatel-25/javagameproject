@@ -2,6 +2,8 @@ package game;
 
 
 import city.cs.engine.*;
+import game.character.Character;
+import game.items.Coin;
 import org.jbox2d.common.Vec2;
 
 
@@ -14,15 +16,13 @@ public class GameWorld extends World {
 
 
 
-
-
         //1. make an empty game world
         World world = new World();
 
         // make the ground
         Shape shape = new BoxShape(30, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
-        ground.setPosition(new Vec2(0f, -11.5f));
+        ground.setPosition(new Vec2(0f, -100));
 
         // make a suspended platform
         Shape platformShape = new BoxShape(3, 0.5f);
@@ -32,15 +32,21 @@ public class GameWorld extends World {
         // make the character
        Shape characterShape = new BoxShape(1, 2);
         character = new Character(this, characterShape);
-        character.setPosition(new Vec2(7, -9));
+        character.setPosition(new Vec2(7, -100));
         character.setCredits(15);
+        float coinRadius = 0.75f;
+        Shape coinShape = new CircleShape(coinRadius);
+
+        Coin coin = new Coin(this,coinShape,character,5,-2,coinRadius);
+
+
 
         // start our game world simulation!
         world.start();
 
     }
 
-    public Character getStudent(){
+    public Character getCharacter(){
         return character;
     }
 }

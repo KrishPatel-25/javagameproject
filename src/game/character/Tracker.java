@@ -1,10 +1,10 @@
-package game;
+package game.character;
 
 import city.cs.engine.StepEvent;
 import city.cs.engine.StepListener;
+import game.GameView;
+import game.character.Character;
 import org.jbox2d.common.Vec2;
-
-import java.awt.*;
 
 public class Tracker implements StepListener {
     private GameView view;
@@ -20,7 +20,11 @@ public class Tracker implements StepListener {
     }
     @Override
     public void postStep(StepEvent e) {
-        view.setCentre(new Vec2(character.getPosition()));
+        view.setCentre(new Vec2(character.getPosition().x, character.getPosition().y));
+
+//        view.setCentre(character.getPosition());
+
+
 
 //        view.updateBackground((Graphics2D) view.getGraphics(),character);
 

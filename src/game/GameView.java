@@ -1,11 +1,14 @@
 package game;
 
+import city.cs.engine.StepEvent;
+import city.cs.engine.StepListener;
 import city.cs.engine.UserView;
+import game.character.Character;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class GameView extends UserView {
+public class GameView extends UserView{
 
     private final Image background;
     public GameView(GameWorld world, int width, int height) {
@@ -20,8 +23,10 @@ public class GameView extends UserView {
 
     }
 
+
     protected void updateBackground(Graphics2D g, Character character) {
-        g.drawImage(background, (int) character.getPosition().x,0,this);
+//        g.drawImage(background, (int) character.getPosition().x,0,this);
+        g.drawImage(background,0,0,this);
 
     }
 

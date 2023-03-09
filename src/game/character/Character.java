@@ -1,10 +1,12 @@
-package game;
+package game.character;
 
 import city.cs.engine.*;
 import city.cs.engine.Shape;
 public class Character extends Walker {
 
     private int sensorContacts;
+
+    private CharacterFacing previousCharacterFacing;
 
     private CharacterFacing characterFacing;
     private boolean isInAir;
@@ -45,7 +47,16 @@ public class Character extends Walker {
         sensor.addSensorListener(new CharacterSensorListener(this));
         sensorContacts = 0;
         isInAir = false;
-        characterFacing = CharacterFacing.RIGHT;
+        characterFacing = null;
+        previousCharacterFacing = CharacterFacing.RIGHT;
+    }
+
+    public CharacterFacing getPreviousCharacterFacing() {
+        return previousCharacterFacing;
+    }
+
+    public void setPreviousCharacterFacing(CharacterFacing previousCharacterFacing) {
+        this.previousCharacterFacing = previousCharacterFacing;
     }
 
     public boolean isInAir() {

@@ -1,4 +1,4 @@
-package game;
+package game.character;
 
 import city.cs.engine.Body;
 import city.cs.engine.BodyImage;
@@ -20,17 +20,32 @@ public class CharacterSensorListener implements SensorListener {
             character.setSensorContacts(character.getSensorContacts()+1);
             if(character.isInAir()){
                 character.setInAir(false);
-                character.removeAllImages();
+                character.startWalking(0);
 
-                if(character.getCharacterFacing() == CharacterFacing.LEFT) {
+                if((character.getCharacterFacing() == null && character.getPreviousCharacterFacing() == CharacterFacing.LEFT)) {
                     character.removeAllImages();
                     character.addImage(new BodyImage("data/mario left.png", character.getCharacterHalfHeight() * 2));
+                    return;
                 }
 
-                if(character.getCharacterFacing() == CharacterFacing.RIGHT){
+                if((character.getCharacterFacing() == null && character.getPreviousCharacterFacing() == CharacterFacing.RIGHT)){
                     character.removeAllImages();
                     character.addImage(new BodyImage("data/mario right.png", character.getCharacterHalfHeight() * 2));
+                    return;
 
+                }
+                if(character.getCharacterFacing() == CharacterFacing.LEFT){
+                    character.removeAllImages();
+                    character.addImage(new BodyImage("data/mario left.png", character.getCharacterHalfHeight() * 2));
+                    return;
+
+
+                }
+
+                if(character.getCharacterFacing() == CharacterFacing.RIGHT) {
+                    character.removeAllImages();
+                    character.addImage(new BodyImage("data/mario right.png", character.getCharacterHalfHeight() * 2));
+                    return;
                 }
             }
         }
