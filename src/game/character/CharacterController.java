@@ -36,7 +36,7 @@ public class CharacterController implements KeyListener {
                 return;
             }
             character.setInAir(true);
-            character.jump(10);
+            character.jump(15);
 
             if(character.getCharacterFacing() == null){
                 character.startWalking(0);
@@ -65,7 +65,8 @@ public class CharacterController implements KeyListener {
 
 
         }
-    }
+
+        }
 
 
 

@@ -1,4 +1,4 @@
-package game;
+package game.items;
 
 import city.cs.engine.Body;
 import city.cs.engine.CollisionEvent;

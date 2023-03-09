@@ -18,6 +18,8 @@ public class CharacterSensorListener implements SensorListener {
         Body body = sensorEvent.getSensor().getBody();
         if(body instanceof Character character){
             character.setSensorContacts(character.getSensorContacts()+1);
+
+
             if(character.isInAir()){
                 character.setInAir(false);
                 character.startWalking(0);

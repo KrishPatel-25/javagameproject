@@ -2,7 +2,6 @@ package game.items;
 
 import city.cs.engine.*;
 import game.character.Character;
-import game.CoinCollisionDetector;
 import org.jbox2d.common.Vec2;
 
 public class Coin extends StaticBody {
