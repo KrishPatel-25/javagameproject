@@ -30,7 +30,8 @@ public class GameWorld extends World {
         platform1.setPosition(new Vec2(-8, -4f));
 
         // make the character
-        character = new Character(this);
+       Shape characterShape = new BoxShape(1, 2);
+        character = new Character(this, characterShape);
         character.setPosition(new Vec2(7, -9));
         character.setCredits(15);
 

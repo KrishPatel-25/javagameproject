@@ -22,7 +22,7 @@ public class Tracker implements StepListener {
     public void postStep(StepEvent e) {
         view.setCentre(new Vec2(character.getPosition()));
 
-        view.updateBackground((Graphics2D) view.getGraphics(),character);
+//        view.updateBackground((Graphics2D) view.getGraphics(),character);
 
     }
 
