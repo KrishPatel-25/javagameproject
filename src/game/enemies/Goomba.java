@@ -24,7 +24,7 @@ public class Goomba extends Walker{
     public Goomba(World world, Shape goomba) {
         super(world, goomba);
         addImage(image);
-        Shape shape = new PolygonShape(-1.94f,-0.76f, 1.92f,-0.76f, 1.92f,1.97f, -1.94f,1.97f);
+        Shape shape = new PolygonShape(-1.94f,0.24f, 1.88f,0.22f, 1.88f,-1.93f, -1.94f,-1.94f);
         Sensor sensor = new Sensor(this, shape);
 
         this.addCollisionListener(new GoombaCollisionDetector(this));

@@ -4,6 +4,8 @@ import city.cs.engine.*;
 import city.cs.engine.Shape;
 public class Character extends Walker {
 
+    private int lives;
+
     private int sensorContacts;
 
     private CharacterFacing previousCharacterFacing;
@@ -49,6 +51,19 @@ public class Character extends Walker {
         isInAir = false;
         characterFacing = null;
         previousCharacterFacing = CharacterFacing.RIGHT;
+        lives = 3;
+    }
+
+    public void loseLife(){
+        this.lives -=1 ;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
     }
 
     public CharacterFacing getPreviousCharacterFacing() {

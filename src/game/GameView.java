@@ -15,14 +15,14 @@ public class GameView extends UserView{
     private final Image background;
     public GameView(GameWorld world, int width, int height) {
         super(world, width, height);
-        background = new ImageIcon("data/background.png").getImage();
+        background = new ImageIcon("data/sky.png").getImage();
     }
 
 
 
     @Override
     protected void paintBackground(Graphics2D g) {
-        g.drawImage(background,(int) (0 -  this.getCentre().x * 20), (int) this.getCentre().y, this);
+        g.drawImage(background,(int) (0 -  this.getCentre().x * 20), (int) (this.getCentre().y), this);
 
     }
 

@@ -22,7 +22,7 @@ public class Game {
 
 
         //3. make a view to look into the game world
-        GameView view = new GameView(world, 800, 800);
+        GameView view = new GameView(world, 800, 600);
         view.setZoom(10);
 
 

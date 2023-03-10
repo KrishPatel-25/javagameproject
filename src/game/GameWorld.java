@@ -23,7 +23,9 @@ public class GameWorld extends World {
         // make the ground
         Shape shape = new BoxShape(30, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
-        ground.setPosition(new Vec2(0f, -10));
+        ground.setPosition(new Vec2(0f, -2f));
+
+        ground.addImage(new BodyImage("data/ground.png"));
 
         // make a suspended platform
         Shape platformShape = new BoxShape(3, 0.5f);
@@ -52,7 +54,7 @@ public class GameWorld extends World {
 
         //make goomba
 
-        Shape goombaShape = new BoxShape(1,1);
+        Shape goombaShape = new BoxShape(1,1f);
         Goomba goomba = new Goomba(this, goombaShape);
         goomba.setPosition(new Vec2(10,0));
 

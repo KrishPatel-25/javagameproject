@@ -5,16 +5,21 @@ import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 import game.character.Character;
 
+import java.io.ObjectInputStream;
+
 public class GoombaCollisionDetector implements CollisionListener {
 
     @Override
     public void collide(CollisionEvent collisionEvent) {
         Body body = collisionEvent.getOtherBody();
         if (body instanceof Character) {
-           {
+            {
 
                 goomba.destroy();
+
+
             }
+
         }
     }
 
@@ -24,5 +29,6 @@ public class GoombaCollisionDetector implements CollisionListener {
         this.goomba = goomba;
     }
 
-
 }
+
+
