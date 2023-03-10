@@ -20,7 +20,7 @@ public class Tracker implements StepListener {
     }
     @Override
     public void postStep(StepEvent e) {
-        view.setCentre(new Vec2(character.getPosition().x, character.getPosition().y));
+        view.setCentre(new Vec2(character.getPosition().x, character.getPosition().y + 20));
 
 //        view.setCentre(character.getPosition());
 
