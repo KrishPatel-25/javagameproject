@@ -14,8 +14,11 @@ public class CoinCollisionDetector implements CollisionListener{
 
         Body body = collisionEvent.getOtherBody();
         if (body instanceof Character) {
-            character.setCredits(character.getCredits()+1);
+//            character.setCoins(character.getCoins()+1);
+            Character.coins++;
             coin.destroy();
+
+
         }
 
     }

@@ -4,7 +4,9 @@ import city.cs.engine.*;
 import city.cs.engine.Shape;
 public class Character extends Walker {
 
-    private int lives;
+    public static int lives = 3;
+
+    public static int coins = 0;
 
     private int sensorContacts;
 
@@ -17,15 +19,14 @@ public class Character extends Walker {
     private int characterHalfHeight = 2;
 
     private static Shape studentShape;
-    private int coins = 0;
 
-    public int getCredits() {
+    public int getCoins() {
         return coins;
 
     }
 
-    public void setCredits(int credits) {
-        this.coins = credits;
+    public void setCoins(int coins) {
+        this.coins = coins;
     }
 
 
@@ -51,12 +52,8 @@ public class Character extends Walker {
         isInAir = false;
         characterFacing = null;
         previousCharacterFacing = CharacterFacing.RIGHT;
-        lives = 3;
     }
 
-    public void loseLife(){
-        this.lives -=1 ;
-    }
 
     public int getLives() {
         return lives;

@@ -14,6 +14,7 @@ public class GoombaCollisionDetector implements CollisionListener {
         Body body = collisionEvent.getOtherBody();
         if (body instanceof Character) {
             {
+                Character.lives--;
 
                 goomba.destroy();
 
