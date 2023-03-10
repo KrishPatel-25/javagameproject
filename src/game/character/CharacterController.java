@@ -7,6 +7,10 @@ import java.awt.event.KeyListener;
 
 public class CharacterController implements KeyListener {
 
+   public int walkingSpeed = 5;
+
+
+
     private boolean isJumping;
 
     @Override
@@ -17,15 +21,21 @@ public class CharacterController implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
+
+        if(code == KeyEvent.VK_SHIFT){
+            walkingSpeed = 8;
+
+    }
+
         if (code == KeyEvent.VK_A) {
-            character.startWalking(-5);
+            character.startWalking(-walkingSpeed);
             character.setPreviousCharacterFacing(character.getCharacterFacing());
             character.setCharacterFacing(CharacterFacing.LEFT);
             character.removeAllImages();
             character.addImage(new BodyImage("data/mario left.png", character.getCharacterHalfHeight() *2));
 
         } if (code == KeyEvent.VK_D) {
-            character.startWalking(5);
+            character.startWalking(walkingSpeed);
             character.setPreviousCharacterFacing(character.getCharacterFacing());
             character.setCharacterFacing(CharacterFacing.RIGHT);
             character.removeAllImages();
@@ -36,7 +46,7 @@ public class CharacterController implements KeyListener {
                 return;
             }
             character.setInAir(true);
-            character.jump(15);
+            character.jump(character.jumpingSpeed);
 
             if(character.getCharacterFacing() == null){
                 character.startWalking(0);
@@ -48,14 +58,14 @@ public class CharacterController implements KeyListener {
 
 
             if(character.getCharacterFacing() == CharacterFacing.LEFT){
-                character.startWalking(-5);
+                character.startWalking(-walkingSpeed);
                 character.removeAllImages();
                 character.addImage(new BodyImage("data/mario left jump.png", character.getCharacterHalfHeight() * 2));
                 return;
             }
 
             if(character.getCharacterFacing() == CharacterFacing.RIGHT) {
-                character.startWalking(5);
+                character.startWalking(walkingSpeed);
                 character.removeAllImages();
                 character.addImage(new BodyImage("data/mario right jump.png", character.getCharacterHalfHeight() * 2));
                 return;
@@ -85,6 +95,13 @@ public class CharacterController implements KeyListener {
             character.removeAllImages();
             character.addImage(new BodyImage("data/mario right.png", character.getCharacterHalfHeight() * 2));
         }
+
+        if(e.getKeyCode() == KeyEvent.VK_SHIFT){
+            walkingSpeed = 5;
+
+        }
+
+
 
 
 

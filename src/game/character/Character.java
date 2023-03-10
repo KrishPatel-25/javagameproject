@@ -25,6 +25,19 @@ public class Character extends Walker {
 
     }
 
+    public int jumpingSpeed = 12;
+
+    public int getJumpingSpeed() {
+        return jumpingSpeed;
+    }
+
+    public void setJumpingSpeed(int jumpingSpeed) {
+        this.jumpingSpeed = jumpingSpeed;
+    }
+
+
+
+
     public void setCoins(int coins) {
         this.coins = coins;
     }

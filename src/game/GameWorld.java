@@ -4,6 +4,7 @@ package game;
 import city.cs.engine.*;
 import game.character.Character;
 import game.enemies.Goomba;
+import game.enemies.Mushroom;
 import game.items.Coin;
 import org.jbox2d.common.Vec2;
 
@@ -21,9 +22,9 @@ public class GameWorld extends World {
         World world = new World();
 
         // make the ground
-        Shape shape = new BoxShape(1000, 0.5f);
+        Shape shape = new BoxShape(500, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
-        ground.setPosition(new Vec2(0f, 19.75f));
+        ground.setPosition(new Vec2(0f, 23.25f));
         ground.addImage(new BodyImage("data/transparent.png"));
 
 
@@ -39,11 +40,11 @@ public class GameWorld extends World {
         Shape wall1 = new BoxShape(22, 200);
         StaticBody platform2 = new StaticBody(this, wall1);
         platform2.setPosition(new Vec2(-22, 10));
-//        platform2.addImage(new BodyImage("data/noentry.gif"));
+//        platform2.addImage(new BodyImage("data/noentry.gif",50));
 
         Shape tunnel = new BoxShape(2.5f, 2.5f);
         StaticBody platform3 = new StaticBody(this, tunnel);
-        platform3.setPosition(new Vec2(35, 20));
+        platform3.setPosition(new Vec2(55, 26.25f));
         platform3.addImage(new BodyImage("data/tunnel.png", 5));
 
 
@@ -72,11 +73,21 @@ public class GameWorld extends World {
         goomba.setPosition(new Vec2(65,25));
 
 
+        //make mushroom
+
+        Shape mushroomShape = new BoxShape(1,0.50f);
+        Mushroom mushroom = new Mushroom(this,mushroomShape);
+        mushroom.setPosition(new Vec2(35,25));
+
 
         //make coin
         float coinRadius = 0.75f;
         Shape coinShape = new CircleShape(coinRadius);
         Coin coin = new Coin(this,coinShape,character,20,28,coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 30, 28, coinRadius);
 
 
 

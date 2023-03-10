@@ -22,7 +22,7 @@ public class Game {
 
         //3. make a view to look into the game world
         GameView view = new GameView(world, 800, 600);
-        view.setZoom(10);
+//        view.setZoom(10);
 
 
 
@@ -55,11 +55,14 @@ public class Game {
         // finally, make the frame visible
         frame.setVisible(true);
 
+        world.start();
+
         //optional: uncomment this to make a debugging view
-         JFrame debugView = new DebugViewer(world, 800, 600);
+//         JFrame debugView = new DebugViewer(world, 800, 600);
 
 
     }
+
 
     /** Run the game. */
     public static void main(String[] args) {
