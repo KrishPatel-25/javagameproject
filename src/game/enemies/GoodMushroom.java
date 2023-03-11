@@ -3,7 +3,7 @@ package game.enemies;
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
-public class Mushroom extends Walker implements StepListener {
+public class GoodMushroom extends Walker implements StepListener {
 
     private int sensorContacts;
     private final int SPEED = 4;
@@ -11,7 +11,7 @@ public class Mushroom extends Walker implements StepListener {
     private float left, right;
     private final int RANGE = 6;
     private static final BodyImage image =
-            new BodyImage("data/mushroombad.png", 3f);
+            new BodyImage("data/mushroomgood.png", 3f);
 
     public int getSensorContacts() {
         return sensorContacts;
@@ -21,21 +21,17 @@ public class Mushroom extends Walker implements StepListener {
         this.sensorContacts = sensorContacts;
     }
 
-    public Mushroom(World world, Shape mushroom) {
-        super(world, mushroom);
+    public GoodMushroom(World world, Shape mushroomGood){
+        super(world, mushroomGood);
         addImage(image);
         world.addStepListener(this);
         startWalking(SPEED);
         Shape shape = new PolygonShape(-1.01f,1.1f, 1.01f,1.13f, 0.99f,-0.86f, -1.08f,-0.89f);
         Sensor sensor = new Sensor(this, shape);
 
-        this.addCollisionListener(new MushroomCollisionDetector(this));
-
-
+        this.addCollisionListener(new GoodMushroomCollisionDetector(this));
 
     }
-
-
     @Override
     public void setPosition(Vec2 position) {
         super.setPosition(position);
@@ -58,6 +54,7 @@ public class Mushroom extends Walker implements StepListener {
     public void postStep(StepEvent stepEvent) {
 
     }
+
 
 
 

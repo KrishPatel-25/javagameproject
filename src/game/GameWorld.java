@@ -3,6 +3,7 @@ package game;
 
 import city.cs.engine.*;
 import game.character.Character;
+import game.enemies.GoodMushroom;
 import game.enemies.Goomba;
 import game.enemies.Mushroom;
 import game.items.Coin;
@@ -34,17 +35,29 @@ public class GameWorld extends World {
         // make a suspended platform
         Shape platformShape = new BoxShape(5, 1);
         StaticBody platform1 = new StaticBody(this, platformShape);
-        platform1.setPosition(new Vec2(30, 30f));
+        platform1.setPosition(new Vec2(30, 29.75f));
         platform1.addImage(new BodyImage("data/platformtexture.jpg", 2));
+
+
+        platformShape = new BoxShape(5,1);
+        StaticBody platform4 = new StaticBody(this,platformShape);
+        platform4.setPosition(new Vec2(70,32f));
+        platform4.addImage(new BodyImage("data/platformtexture.jpg", 2));
+
 
         Shape wall1 = new BoxShape(22, 200);
         StaticBody platform2 = new StaticBody(this, wall1);
         platform2.setPosition(new Vec2(-22, 10));
-//        platform2.addImage(new BodyImage("data/noentry.gif",50));
+//        platform2.addImage(new BodyImage("data/noentry.gif",40));
 
         Shape tunnel = new BoxShape(2.5f, 2.5f);
         StaticBody platform3 = new StaticBody(this, tunnel);
         platform3.setPosition(new Vec2(55, 26.25f));
+        platform3.addImage(new BodyImage("data/tunnel.png", 5));
+
+        tunnel = new BoxShape(2.5f, 2.5f);
+        platform3 = new StaticBody(this, tunnel);
+        platform3.setPosition(new Vec2(100, 26.25f));
         platform3.addImage(new BodyImage("data/tunnel.png", 5));
 
 
@@ -73,11 +86,24 @@ public class GameWorld extends World {
         goomba.setPosition(new Vec2(65,25));
 
 
-        //make mushroom
+        //make bad mushroom
 
         Shape mushroomShape = new BoxShape(1,0.50f);
         Mushroom mushroom = new Mushroom(this,mushroomShape);
-        mushroom.setPosition(new Vec2(35,25));
+        mushroom.setPosition(new Vec2(110,25));
+
+
+        mushroomShape = new BoxShape(1, 0.50f);
+        mushroom = new Mushroom(this, mushroomShape);
+        mushroom.setPosition(new Vec2(80,25));
+
+
+        //make good mushroom
+
+        Shape goodMushroomShape = new BoxShape(1,0.50f);
+        GoodMushroom goodMushroom = new GoodMushroom(this,goodMushroomShape);
+        goodMushroom.setPosition(new Vec2(130,25));
+
 
 
         //make coin
@@ -88,6 +114,39 @@ public class GameWorld extends World {
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
         coin = new Coin(this, coinShape, character, 30, 28, coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 68, 35 , coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 72, 35 , coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 70, 28 , coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 28, 35 , coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 30, 38 , coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 32, 35 , coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 105, 35 , coinRadius);
+
+        coinRadius = 0.75f;
+        coinShape = new CircleShape(coinRadius);
+        coin = new Coin(this, coinShape, character, 115, 35 , coinRadius);
+
 
 
 

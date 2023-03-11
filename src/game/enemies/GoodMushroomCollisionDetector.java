@@ -4,9 +4,7 @@ import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 import game.character.Character;
 
-import java.io.ObjectInputStream;
-
-public class MushroomCollisionDetector implements CollisionListener {
+public class GoodMushroomCollisionDetector implements CollisionListener{
 
     @Override
     public void collide(CollisionEvent collisionEvent) {
@@ -15,8 +13,10 @@ public class MushroomCollisionDetector implements CollisionListener {
 
             {
 
-                ((Character) body).jumpingSpeed--;
-                mushroom.destroy();
+                ((Character) body).jumpingSpeed++;
+                goodMushroom.destroy();
+
+
 
 
 
@@ -26,10 +26,11 @@ public class MushroomCollisionDetector implements CollisionListener {
         }
     }
 
-    private Mushroom mushroom;
 
-    public MushroomCollisionDetector(Mushroom mushroom) {
-        this.mushroom = mushroom;
+    private GoodMushroom goodMushroom;
+
+    public GoodMushroomCollisionDetector(GoodMushroom goodMushroom){
+        this.goodMushroom = goodMushroom;
     }
 
 }

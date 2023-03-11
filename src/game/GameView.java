@@ -16,7 +16,7 @@ public class GameView extends UserView {
     private final Character character;
 
 
-    private Image coin = new ImageIcon("data/coin.png").getImage();
+    private Image coinSpin = new ImageIcon("data/coin spin.gif").getImage();
     private Image heart = new ImageIcon("data/heart.gif").getImage();
     private Image lostHeart = new ImageIcon("data/lost heart.gif").getImage();
 
@@ -43,7 +43,7 @@ public class GameView extends UserView {
 
 //        g.drawImage(rain, 20, 0, 50, 600, this);
 
-        g.drawImage(coin, 650, 0, 40, 40, this);
+        g.drawImage(coinSpin, 725, 0, 40, 40, this);
         g.drawString(""+ character.coins, 775,20);
 
 
@@ -68,12 +68,12 @@ public class GameView extends UserView {
         }
         if (Character.lives == 0){
             g.drawImage(gameOver,0,0,800,600,this);
-            character.getWorld().stop();
+
         }
 
-        if(Character.coins == 25){
+        if(Character.coins == 10){
             g.drawImage(winner,0,0,800,600,this);
-            character.getWorld().stop();
+
 
         }
 
