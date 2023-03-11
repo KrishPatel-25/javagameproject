@@ -2,6 +2,8 @@ package game.character;
 
 import city.cs.engine.*;
 import city.cs.engine.Shape;
+import org.jbox2d.common.Timer;
+
 public class Character extends Walker {
 
     public static int lives = 3;
@@ -18,11 +20,40 @@ public class Character extends Walker {
     private int characterHalfWidth = 1;
     private int characterHalfHeight = 2;
 
+    private int previousJumpSpeed;
+
+    public int getPreviousJumpSpeed() {
+        return previousJumpSpeed;
+    }
+
+    public void setPreviousJumpSpeed(int previousJumpSpeed) {
+        this.previousJumpSpeed = previousJumpSpeed;
+    }
+
     private static Shape studentShape;
+
+    private Timer boostTimer;
+
+    public Timer getBoostTimer() {
+        return boostTimer;
+    }
+
+    public void setBoostTimer(Timer boostTimer) {
+        this.boostTimer = boostTimer;
+    }
 
     public int getCoins() {
         return coins;
 
+    }
+
+    private boolean jumpBoost = false;
+
+    public boolean isJumpBoost() {
+        return jumpBoost;
+    }
+    public void setJumpBoost(boolean jumpBoost) {
+        this.jumpBoost = jumpBoost;
     }
 
     public int jumpingSpeed = 12;
@@ -65,7 +96,11 @@ public class Character extends Walker {
         isInAir = false;
         characterFacing = null;
         previousCharacterFacing = CharacterFacing.RIGHT;
+        this.boostTimer = new Timer();
+        this.previousJumpSpeed = jumpingSpeed;
     }
+
+
 
 
     public int getLives() {

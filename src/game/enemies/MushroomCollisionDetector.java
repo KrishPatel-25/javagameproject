@@ -11,11 +11,12 @@ public class MushroomCollisionDetector implements CollisionListener {
     @Override
     public void collide(CollisionEvent collisionEvent) {
         Body body = collisionEvent.getOtherBody();
-        if (body instanceof Character) {
+        if (body instanceof Character character) {
 
             {
 
-                ((Character) body).jumpingSpeed--;
+               character.jumpingSpeed--;
+               character.setPreviousJumpSpeed(character.jumpingSpeed);
                 mushroom.destroy();
 
 

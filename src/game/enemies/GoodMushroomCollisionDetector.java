@@ -9,12 +9,13 @@ public class GoodMushroomCollisionDetector implements CollisionListener{
     @Override
     public void collide(CollisionEvent collisionEvent) {
         Body body = collisionEvent.getOtherBody();
-        if (body instanceof Character) {
+        if (body instanceof Character character) {
 
             {
 
-                ((Character) body).jumpingSpeed++;
                 goodMushroom.destroy();
+                character.setJumpBoost(true);
+                character.getBoostTimer().reset();
 
 
 

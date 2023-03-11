@@ -33,21 +33,19 @@ public class GameWorld extends World {
 //        ground.addImage(new BodyImage("data/ground.png"));
 
         // make a suspended platform
-        Shape platformShape = new BoxShape(5, 1);
-        StaticBody platform1 = new StaticBody(this, platformShape);
-        platform1.setPosition(new Vec2(30, 29.75f));
-        platform1.addImage(new BodyImage("data/platformtexture.jpg", 2));
+        Platform platform1 = new Platform(5,1,this);
+        platform1.getPlatform().setPosition(new Vec2(30, 29.75f));
+        platform1.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
 
-        platformShape = new BoxShape(5,1);
-        StaticBody platform4 = new StaticBody(this,platformShape);
-        platform4.setPosition(new Vec2(70,32f));
-        platform4.addImage(new BodyImage("data/platformtexture.jpg", 2));
+        Platform platform2 = new Platform(5,1,this);
+        platform2.getPlatform().setPosition(new Vec2(70,32f));
+        platform2.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
 
         Shape wall1 = new BoxShape(22, 200);
-        StaticBody platform2 = new StaticBody(this, wall1);
-        platform2.setPosition(new Vec2(-22, 10));
+        StaticBody platform5 = new StaticBody(this, wall1);
+        platform5.setPosition(new Vec2(-22, 10));
 //        platform2.addImage(new BodyImage("data/noentry.gif",40));
 
         Shape tunnel = new BoxShape(2.5f, 2.5f);
@@ -103,6 +101,10 @@ public class GameWorld extends World {
         Shape goodMushroomShape = new BoxShape(1,0.50f);
         GoodMushroom goodMushroom = new GoodMushroom(this,goodMushroomShape);
         goodMushroom.setPosition(new Vec2(130,25));
+
+        goodMushroomShape = new BoxShape(1, 0.50f);
+        goodMushroom = new GoodMushroom(this, goodMushroomShape);
+        goodMushroom.setPosition(new Vec2(10,25));
 
 
 

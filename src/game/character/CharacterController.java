@@ -1,6 +1,7 @@
 package game.character;
 
 import city.cs.engine.BodyImage;
+import org.jbox2d.common.Timer;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -46,6 +47,13 @@ public class CharacterController implements KeyListener {
                 return;
             }
             character.setInAir(true);
+            if(character.isJumpBoost() && character.getBoostTimer().getMilliseconds()/1000 < 10){
+                character.jumpingSpeed = 18;
+
+            }
+            else{ character.jumpingSpeed = character.getPreviousJumpSpeed();
+
+            }
             character.jump(character.jumpingSpeed);
 
             if(character.getCharacterFacing() == null){
