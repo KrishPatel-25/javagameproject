@@ -44,29 +44,31 @@ public class GameView extends UserView {
 //        g.drawImage(rain, 20, 0, 50, 600, this);
 
         g.drawImage(coinSpin, 725, 0, 40, 40, this);
-        g.drawString(""+ character.coins, 775,20);
+        g.setFont(new Font(Font.SERIF, Font.ITALIC, 25));
+        g.drawString(""+ character.coins, 775,28);
 
 
 
-        if (Character.lives == 3) {
+
+        if (character.getLives() == 3) {
             g.drawImage(heart, 0, 0, 50, 50, this);
             g.drawImage(heart, 35, 0, 50, 50, this);
             g.drawImage(heart, 70, 0, 50, 50, this);
 
         }
-        if (Character.lives == 2) {
+        if (character.getLives() == 2) {
             g.drawImage(heart, 0, 0, 50, 50, this);
             g.drawImage(heart, 35, 0, 50, 50, this);
             g.drawImage(lostHeart,70, 0, 50, 50, this);
 
         }
-        if (Character.lives == 1) {
+        if (character.getLives() == 1) {
             g.drawImage(heart, 0, 0, 50, 50, this);
             g.drawImage(lostHeart,35, 0, 50, 50, this);
             g.drawImage(lostHeart,70, 0, 50, 50, this);
 
         }
-        if (Character.lives == 0){
+        if (character.getLives() == 0){
             g.drawImage(gameOver,0,0,800,600,this);
 
         }
@@ -76,7 +78,6 @@ public class GameView extends UserView {
 
 
         }
-
 
 //    protected void updateBackground(Graphics2D g) {
 //        g.drawImage(background, 0,0,this);

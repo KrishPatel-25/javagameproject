@@ -1,10 +1,9 @@
-package game.enemies;
+package game.entities.mushrooms;
+
 import city.cs.engine.*;
-import city.cs.engine.Shape;
-import game.items.CoinCollisionDetector;
 import org.jbox2d.common.Vec2;
 
-public class Goomba extends Walker implements StepListener{
+public class Mushroom extends Walker implements StepListener {
 
     private int sensorContacts;
     private final int SPEED = 4;
@@ -12,8 +11,7 @@ public class Goomba extends Walker implements StepListener{
     private float left, right;
     private final int RANGE = 6;
     private static final BodyImage image =
-            new BodyImage("data/goomba right.png", 2f);
-
+            new BodyImage("data/mushroombad.png", 3f);
 
     public int getSensorContacts() {
         return sensorContacts;
@@ -23,20 +21,20 @@ public class Goomba extends Walker implements StepListener{
         this.sensorContacts = sensorContacts;
     }
 
-
-    public Goomba(World world, Shape goomba) {
-        super(world, goomba);
+    public Mushroom(World world, Shape mushroom) {
+        super(world, mushroom);
         addImage(image);
         world.addStepListener(this);
         startWalking(SPEED);
-        Shape shape = new PolygonShape(-1.94f,0.24f, 1.88f,0.22f, 1.88f,-1.93f, -1.94f,-1.94f);
+        Shape shape = new PolygonShape(-1.01f,1.1f, 1.01f,1.13f, 0.99f,-0.86f, -1.08f,-0.89f);
         Sensor sensor = new Sensor(this, shape);
 
-        this.addCollisionListener(new GoombaCollisionDetector(this));
+        this.addCollisionListener(new MushroomCollisionDetector(this));
 
 
 
     }
+
 
     @Override
     public void setPosition(Vec2 position) {
@@ -64,4 +62,4 @@ public class Goomba extends Walker implements StepListener{
 
 
 
-    }
+}

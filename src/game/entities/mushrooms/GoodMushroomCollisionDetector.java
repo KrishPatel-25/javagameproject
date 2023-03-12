@@ -1,4 +1,4 @@
-package game.enemies;
+package game.entities.mushrooms;
 import city.cs.engine.Body;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;

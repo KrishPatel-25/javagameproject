@@ -3,9 +3,10 @@ package game;
 
 import city.cs.engine.*;
 import game.character.Character;
-import game.enemies.GoodMushroom;
-import game.enemies.Goomba;
-import game.enemies.Mushroom;
+import game.entities.koopa.Koopa;
+import game.entities.mushrooms.GoodMushroom;
+import game.entities.goomba.Goomba;
+import game.entities.mushrooms.Mushroom;
 import game.items.Coin;
 import org.jbox2d.common.Vec2;
 
@@ -28,9 +29,13 @@ public class GameWorld extends World {
         ground.setPosition(new Vec2(0f, 23.25f));
         ground.addImage(new BodyImage("data/transparent.png"));
 
+        //make wall
+        Platform wall = new Platform(22, 200,this);
+        wall.getPlatform().setPosition(new Vec2(-22, 10));
+//        wall.addImage(new BodyImage("data/noentry.gif",40));
 
 
-//        ground.addImage(new BodyImage("data/ground.png"));
+
 
         // make a suspended platform
         Platform platform1 = new Platform(5,1,this);
@@ -43,10 +48,7 @@ public class GameWorld extends World {
         platform2.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
 
-        Shape wall1 = new BoxShape(22, 200);
-        StaticBody platform5 = new StaticBody(this, wall1);
-        platform5.setPosition(new Vec2(-22, 10));
-//        platform2.addImage(new BodyImage("data/noentry.gif",40));
+
 
         Shape tunnel = new BoxShape(2.5f, 2.5f);
         StaticBody platform3 = new StaticBody(this, tunnel);
@@ -68,16 +70,23 @@ public class GameWorld extends World {
         character.setPosition(new Vec2(5, 25));
         character.setCoins(0);
 
+        //make koopa
+
+        Shape koopaShape = new BoxShape(1,1f);
+        Koopa koopa = new Koopa(this,koopaShape);
+        koopa.setPosition(new Vec2(10,25));
+
+
         //make goomba
 
         Shape goombaShape = new BoxShape(1,1f);
         Goomba goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(25,25));
-
-
-        goombaShape = new BoxShape(1, 1f);
-        goomba = new Goomba(this, goombaShape);
         goomba.setPosition(new Vec2(45,25));
+
+
+//        goombaShape = new BoxShape(1, 1f);
+//        goomba = new Goomba(this, goombaShape);
+//        goomba.setPosition(new Vec2(45,25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
@@ -102,9 +111,9 @@ public class GameWorld extends World {
         GoodMushroom goodMushroom = new GoodMushroom(this,goodMushroomShape);
         goodMushroom.setPosition(new Vec2(130,25));
 
-        goodMushroomShape = new BoxShape(1, 0.50f);
-        goodMushroom = new GoodMushroom(this, goodMushroomShape);
-        goodMushroom.setPosition(new Vec2(10,25));
+//        goodMushroomShape = new BoxShape(1, 0.50f);
+//        goodMushroom = new GoodMushroom(this, goodMushroomShape);
+//        goodMushroom.setPosition(new Vec2(10,25));
 
 
 

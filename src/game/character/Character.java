@@ -6,7 +6,7 @@ import org.jbox2d.common.Timer;
 
 public class Character extends Walker {
 
-    public static int lives = 3;
+    public int lives = 3;
 
     public static int coins = 0;
 

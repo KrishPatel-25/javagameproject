@@ -1,21 +1,18 @@
-package game.enemies;
+package game.entities.goomba;
 
 import city.cs.engine.Body;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 import game.character.Character;
 
-import java.io.ObjectInputStream;
-
 public class GoombaCollisionDetector implements CollisionListener {
 
     @Override
     public void collide(CollisionEvent collisionEvent) {
         Body body = collisionEvent.getOtherBody();
-        if (body instanceof Character) {
+        if (body instanceof Character character && goomba.getCollisionTimer().getMilliseconds() >= 1000) {
             {
-                Character.lives--;
-
+                character.setLives(character.getLives()-1);
                 goomba.destroy();
 
 
@@ -24,7 +21,7 @@ public class GoombaCollisionDetector implements CollisionListener {
         }
     }
 
-    private Goomba goomba;
+    private final Goomba goomba;
 
     public GoombaCollisionDetector(Goomba goomba) {
         this.goomba = goomba;
