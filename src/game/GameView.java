@@ -71,9 +71,10 @@ public class GameView extends UserView {
         if (character.getLives() == 0){
             g.drawImage(gameOver,0,0,800,600,this);
 
+
         }
 
-        if(Character.coins == 10){
+        if(Character.coins == 30){
             g.drawImage(winner,0,0,800,600,this);
 
 

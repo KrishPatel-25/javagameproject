@@ -28,21 +28,21 @@ public class CharacterController implements KeyListener {
 
     }
 
-        if (code == KeyEvent.VK_A) {
+        if (code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT) {
             character.startWalking(-walkingSpeed);
             character.setPreviousCharacterFacing(character.getCharacterFacing());
             character.setCharacterFacing(CharacterFacing.LEFT);
             character.removeAllImages();
             character.addImage(new BodyImage("data/mario left.png", character.getCharacterHalfHeight() *2));
 
-        } if (code == KeyEvent.VK_D) {
+        } if (code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
             character.startWalking(walkingSpeed);
             character.setPreviousCharacterFacing(character.getCharacterFacing());
             character.setCharacterFacing(CharacterFacing.RIGHT);
             character.removeAllImages();
             character.addImage(new BodyImage("data/mario right.png", character.getCharacterHalfHeight() *2));
         }
-        if (code == KeyEvent.VK_W){
+        if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP || code == KeyEvent.VK_SPACE){
             if(character.getSensorContacts() < 1){
                 return;
             }
@@ -90,16 +90,16 @@ public class CharacterController implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_D){
+        if(e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT){
             character.startWalking(0);
             character.setPreviousCharacterFacing(character.getCharacterFacing());
             character.setCharacterFacing(null);
         }
-        if(e.getKeyCode() == KeyEvent.VK_A && character.getSensorContacts() >= 1){
+        if((e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT) && character.getSensorContacts() >= 1){
             character.removeAllImages();
             character.addImage(new BodyImage("data/mario left.png", character.getCharacterHalfHeight() * 2));
         }
-        if(e.getKeyCode() == KeyEvent.VK_D && character.getSensorContacts() >= 1) {
+        if((e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) && character.getSensorContacts() >= 1) {
             character.removeAllImages();
             character.addImage(new BodyImage("data/mario right.png", character.getCharacterHalfHeight() * 2));
         }
