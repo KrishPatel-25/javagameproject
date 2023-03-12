@@ -60,6 +60,8 @@ public class Game {
         //optional: uncomment this to make a debugging view
 //         JFrame debugView = new DebugViewer(world, 800, 600);
 
+        //none of the images or gifs used are mine and I will not use them for commercial purposes. They are strictly used for my coursework.
+
 
     }
 
