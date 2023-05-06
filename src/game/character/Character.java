@@ -4,6 +4,7 @@ import city.cs.engine.*;
 import city.cs.engine.Shape;
 import game.GameSaverLoader;
 import org.jbox2d.common.Timer;
+import org.jbox2d.common.Vec2;
 
 import static game.GameSaverLoader.loadedCoins;
 import static game.GameSaverLoader.loadedLives;
@@ -99,6 +100,7 @@ public class Character extends Walker {
 
         }
     }
+
 
 
 

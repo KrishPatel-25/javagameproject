@@ -11,6 +11,8 @@ public class GameSaverLoader {
     public static int loadedLives;
     public static int loadedCoins;
     static int loadedTimer;
+    public static float loadedX;
+    public static float loadedY;
     public static boolean loadedGame = false;
 
     // Initialises save file name and object
@@ -24,9 +26,10 @@ public class GameSaverLoader {
     // Method for saving the current game
     public static void save(String fileName) throws IOException {
         boolean append = true;
-        // Saves the stats in the format lives,coins,timer
+        GameWorld.getCharacterPosition();
+        // Saves the stats in the format lives,coins,timer, character x position, character y position
         try (FileWriter writer = new FileWriter(fileName, append)) {
-            writer.write( Character.getLives() + "," + Character.getCoins() + "," + GameTimer.getTimer() + "\n");
+            writer.write( Character.getLives() + "," + Character.getCoins() + "," + GameTimer.getTimer() + "," + GameWorld.x + "," + GameWorld.y + "\n");
         }
     }
 
@@ -35,6 +38,8 @@ public class GameSaverLoader {
         int lives = 0;
         int coins = 0;
         int timer = 0;
+        float x = 0;
+        float y = 0;
         FileReader fr = null;
         BufferedReader reader = null;
 
@@ -50,6 +55,8 @@ public class GameSaverLoader {
                 lives = Integer.parseInt(tokens[0]);
                 coins = Integer.parseInt(tokens[1]);
                 timer = Integer.parseInt(tokens[2]);
+                x = Float.parseFloat(tokens[3]);
+                y = Float.parseFloat(tokens[4]);
 
                 line = reader.readLine();
             }
@@ -57,6 +64,8 @@ public class GameSaverLoader {
             loadedLives = lives;
             loadedCoins = coins;
             loadedTimer = timer;
+            loadedX = x;
+            loadedY= y;
             // Sets to true so GameLevel knows we are using imported stats
             loadedGame = true;
 

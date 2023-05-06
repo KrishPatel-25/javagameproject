@@ -9,17 +9,22 @@ import game.entities.goomba.Goomba;
 import game.entities.mushrooms.Mushroom;
 import game.items.Coin;
 import org.jbox2d.common.Vec2;
-import java.io.IOException;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import java.io.IOException;
+
+import static game.GameSaverLoader.*;
 
 
 public class GameWorld extends World {
 
-    private Character character;
+    private static Character character;
 
     private SoundClip gameMusic;
+    public static float x;
+    public static float y;
 
 
     public GameWorld() {
@@ -30,14 +35,14 @@ public class GameWorld extends World {
         // make an empty game world
         World world = new World();
 
-//        try {
-//            gameMusic = new SoundClip("data/backgroundMusic.wav");   // Open an audio input stream
-//            gameMusic.loop();                              // Set it to continous playback (looping)
-//        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-//            //code in here will deal with any errors
-//            //that might occur while loading/playing sound
-//            System.out.println(e);
-//        }
+        try {
+            gameMusic = new SoundClip("data/backgroundMusic.wav");   // Open an audio input stream
+            gameMusic.loop();                              // Set it to continous playback (looping)
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            //code in here will deal with any errors
+            //that might occur while loading/playing sound
+            System.out.println(e);
+        }
 
 
         // make the ground
@@ -47,52 +52,47 @@ public class GameWorld extends World {
         ground.addImage(new BodyImage("data/transparent.png"));
 
         //make wall
-        Platform wall = new Platform(22, 200,this);
+        Platform wall = new Platform(22, 200, this);
         wall.getPlatform().setPosition(new Vec2(-22, 10));
 
 
-
-
-
         // make a suspended platform
-        Platform platform1 = new Platform(5,1,this);
+        Platform platform1 = new Platform(5, 1, this);
         platform1.getPlatform().setPosition(new Vec2(30, 29.75f));
         platform1.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
 
-        Platform platform2 = new Platform(5,1,this);
-        platform2.getPlatform().setPosition(new Vec2(70,32f));
+        Platform platform2 = new Platform(5, 1, this);
+        platform2.getPlatform().setPosition(new Vec2(70, 32f));
         platform2.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
-        Platform platform3 = new Platform(5,1,this);
-        platform3.getPlatform().setPosition(new Vec2(120,35f));
+        Platform platform3 = new Platform(5, 1, this);
+        platform3.getPlatform().setPosition(new Vec2(120, 35f));
         platform3.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
-        Platform platform4 = new Platform(5,1,this);
-        platform4.getPlatform().setPosition(new Vec2(166,33.5f));
+        Platform platform4 = new Platform(5, 1, this);
+        platform4.getPlatform().setPosition(new Vec2(166, 33.5f));
         platform4.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
-        Platform platform5 = new Platform(5,1,this);
-        platform5.getPlatform().setPosition(new Vec2(156,33.5f));
+        Platform platform5 = new Platform(5, 1, this);
+        platform5.getPlatform().setPosition(new Vec2(156, 33.5f));
         platform5.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
-        Platform platform6 = new Platform(5,1,this);
-        platform6.getPlatform().setPosition(new Vec2(179,40.5f));
+        Platform platform6 = new Platform(5, 1, this);
+        platform6.getPlatform().setPosition(new Vec2(179, 40.5f));
         platform6.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
-        Platform platform7 = new Platform(5,1,this);
-        platform7.getPlatform().setPosition(new Vec2(181,40.5f));
+        Platform platform7 = new Platform(5, 1, this);
+        platform7.getPlatform().setPosition(new Vec2(181, 40.5f));
         platform7.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
-        Platform platform8 = new Platform(5,1,this);
-        platform8.getPlatform().setPosition(new Vec2(240,40.5f));
+        Platform platform8 = new Platform(5, 1, this);
+        platform8.getPlatform().setPosition(new Vec2(240, 40.5f));
         platform8.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
 
-        Platform platform9 = new Platform(5,1,this);
-        platform9.getPlatform().setPosition(new Vec2(255,30));
+        Platform platform9 = new Platform(5, 1, this);
+        platform9.getPlatform().setPosition(new Vec2(255, 30));
         platform9.getPlatform().addImage(new BodyImage("data/platformtexture.jpg", 2));
-
-
 
 
         // make tunnel platform
@@ -123,115 +123,118 @@ public class GameWorld extends World {
         platform104.addImage(new BodyImage("data/tunnel.png", 5));
 
 
-
-
-
         // make the character
-       Shape characterShape = new BoxShape(1, 2);
+        Shape characterShape = new BoxShape(1, 2);
         character = new Character(this, characterShape);
-        character.setPosition(new Vec2(5, 25));
+
+        if(GameSaverLoader.loadedGame){
+            character.setPosition(new Vec2(loadedX,loadedY));
+        }
+        else{
+            character.setPosition(new Vec2(5, 25));
+        }
+
+
 //        character.setCoins(0);
 
 //        make koopa
 
-        Shape koopaShape = new BoxShape(1,1f);
-        Koopa koopa = new Koopa(this,koopaShape);
-        koopa.setPosition(new Vec2(145,25));
+        Shape koopaShape = new BoxShape(1, 1f);
+        Koopa koopa = new Koopa(this, koopaShape);
+        koopa.setPosition(new Vec2(145, 25));
 
         koopaShape = new BoxShape(1, 1f);
         koopa = new Koopa(this, koopaShape);
-        koopa.setPosition(new Vec2(188,25));
+        koopa.setPosition(new Vec2(188, 25));
 
 
         //make goomba
 
-        Shape goombaShape = new BoxShape(1,1f);
+        Shape goombaShape = new BoxShape(1, 1f);
         Goomba goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(20,25));
+        goomba.setPosition(new Vec2(20, 25));
 
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(45,25));
+        goomba.setPosition(new Vec2(45, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(65,25));
+        goomba.setPosition(new Vec2(65, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(155,25));
+        goomba.setPosition(new Vec2(155, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(160,25));
+        goomba.setPosition(new Vec2(160, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(165,25));
+        goomba.setPosition(new Vec2(165, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(180,42));
+        goomba.setPosition(new Vec2(180, 42));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(192,25));
+        goomba.setPosition(new Vec2(192, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(198,25));
+        goomba.setPosition(new Vec2(198, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(204,25));
+        goomba.setPosition(new Vec2(204, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(210,25));
+        goomba.setPosition(new Vec2(210, 25));
 
         goombaShape = new BoxShape(1, 1f);
         goomba = new Goomba(this, goombaShape);
-        goomba.setPosition(new Vec2(216,25));
-
+        goomba.setPosition(new Vec2(216, 25));
 
 
         //make bad mushroom
 
-        Shape mushroomShape = new BoxShape(1,0.50f);
-        Mushroom mushroom = new Mushroom(this,mushroomShape);
-        mushroom.setPosition(new Vec2(80,25));
+        Shape mushroomShape = new BoxShape(1, 0.50f);
+        Mushroom mushroom = new Mushroom(this, mushroomShape);
+        mushroom.setPosition(new Vec2(80, 25));
 
 
         mushroomShape = new BoxShape(1, 0.50f);
         mushroom = new Mushroom(this, mushroomShape);
-        mushroom.setPosition(new Vec2(110,25));
+        mushroom.setPosition(new Vec2(110, 25));
 
         mushroomShape = new BoxShape(1, 0.50f);
         mushroom = new Mushroom(this, mushroomShape);
-        mushroom.setPosition(new Vec2(118,25));
+        mushroom.setPosition(new Vec2(118, 25));
 
         mushroomShape = new BoxShape(1, 0.50f);
         mushroom = new Mushroom(this, mushroomShape);
-        mushroom.setPosition(new Vec2(170,25));
+        mushroom.setPosition(new Vec2(170, 25));
 
 
         //make good mushroom
 
-        Shape goodMushroomShape = new BoxShape(1,0.50f);
-        GoodMushroom goodMushroom = new GoodMushroom(this,goodMushroomShape);
-        goodMushroom.setPosition(new Vec2(125,25));
+        Shape goodMushroomShape = new BoxShape(1, 0.50f);
+        GoodMushroom goodMushroom = new GoodMushroom(this, goodMushroomShape);
+        goodMushroom.setPosition(new Vec2(125, 25));
 
         goodMushroomShape = new BoxShape(1, 0.50f);
         goodMushroom = new GoodMushroom(this, goodMushroomShape);
-        goodMushroom.setPosition(new Vec2(218,25));
-
+        goodMushroom.setPosition(new Vec2(218, 25));
 
 
         //make coin
         float coinRadius = 0.75f;
         Shape coinShape = new CircleShape(coinRadius);
-        Coin coin = new Coin(this,coinShape,character,20,28,coinRadius);
+        Coin coin = new Coin(this, coinShape, character, 20, 28, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
@@ -239,127 +242,123 @@ public class GameWorld extends World {
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 68, 35 , coinRadius);
+        coin = new Coin(this, coinShape, character, 68, 35, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 72, 35 , coinRadius);
+        coin = new Coin(this, coinShape, character, 72, 35, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 70, 28 , coinRadius);
+        coin = new Coin(this, coinShape, character, 70, 28, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 28, 35 , coinRadius);
+        coin = new Coin(this, coinShape, character, 28, 35, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 30, 38 , coinRadius);
+        coin = new Coin(this, coinShape, character, 30, 38, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 32, 35 , coinRadius);
+        coin = new Coin(this, coinShape, character, 32, 35, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 105, 35 , coinRadius);
+        coin = new Coin(this, coinShape, character, 105, 35, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 120, 42 , coinRadius);
+        coin = new Coin(this, coinShape, character, 120, 42, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 118, 38 , coinRadius);
+        coin = new Coin(this, coinShape, character, 118, 38, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 122, 38 , coinRadius);
+        coin = new Coin(this, coinShape, character, 122, 38, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 160, 28 , coinRadius);
+        coin = new Coin(this, coinShape, character, 160, 28, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 165, 28 , coinRadius);
+        coin = new Coin(this, coinShape, character, 165, 28, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 162.5f, 28 , coinRadius);
+        coin = new Coin(this, coinShape, character, 162.5f, 28, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 152, 37 , coinRadius);
+        coin = new Coin(this, coinShape, character, 152, 37, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 154, 41 , coinRadius);
+        coin = new Coin(this, coinShape, character, 154, 41, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 156, 45 , coinRadius);
+        coin = new Coin(this, coinShape, character, 156, 45, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 158, 41 , coinRadius);
+        coin = new Coin(this, coinShape, character, 158, 41, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 160, 37 , coinRadius);
+        coin = new Coin(this, coinShape, character, 160, 37, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 162, 41 , coinRadius);
+        coin = new Coin(this, coinShape, character, 162, 41, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 164, 45 , coinRadius);
+        coin = new Coin(this, coinShape, character, 164, 45, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 166, 41 , coinRadius);
+        coin = new Coin(this, coinShape, character, 166, 41, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 168, 37 , coinRadius);
+        coin = new Coin(this, coinShape, character, 168, 37, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 179, 45 , coinRadius);
+        coin = new Coin(this, coinShape, character, 179, 45, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 181, 45 , coinRadius);
+        coin = new Coin(this, coinShape, character, 181, 45, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 181, 45 , coinRadius);
+        coin = new Coin(this, coinShape, character, 181, 45, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 240, 45 , coinRadius);
+        coin = new Coin(this, coinShape, character, 240, 45, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 247.5f, 40 , coinRadius);
+        coin = new Coin(this, coinShape, character, 247.5f, 40, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 252, 35 , coinRadius);
+        coin = new Coin(this, coinShape, character, 252, 35, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 255, 35 , coinRadius);
+        coin = new Coin(this, coinShape, character, 255, 35, coinRadius);
 
         coinRadius = 0.75f;
         coinShape = new CircleShape(coinRadius);
-        coin = new Coin(this, coinShape, character, 258, 35 , coinRadius);
-
-
-
-
+        coin = new Coin(this, coinShape, character, 258, 35, coinRadius);
 
 
         // start our game world simulation!
@@ -367,7 +366,16 @@ public class GameWorld extends World {
 
     }
 
-    public Character getCharacter(){
+    public Character getCharacter() {
         return character;
     }
+
+    public static void getCharacterPosition() {
+        Vec2 characterPosition = character.getPosition();
+         x = characterPosition.x;
+         y = characterPosition.y;
+    }
+
+
+
 }
