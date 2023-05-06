@@ -100,10 +100,6 @@ public class Character extends Walker {
         }
     }
 
-    public static int getCharacterPosition(){
-
-
-    }
 
 
     public static int getLives() {
