@@ -17,6 +17,8 @@ public class MenuScreen extends JFrame implements ActionListener {
     private JLabel controls;
     private JButton goBack;
 
+    private JLabel menuBackground;
+
     public MenuScreen() {
 
 
@@ -75,7 +77,11 @@ public class MenuScreen extends JFrame implements ActionListener {
         quitButton.addActionListener(this);
         MenuScreen.add(quitButton);
 
-
+        menuBackground = new JLabel();
+        ImageIcon menuImage = new ImageIcon("data/menu screen.png");
+        menuBackground.setIcon(menuImage);
+        menuBackground.setAlignmentX(Component.CENTER_ALIGNMENT);
+        MenuScreen.add(menuBackground);
         add(MenuScreen);
 
         // Sets frame properties
@@ -83,7 +89,6 @@ public class MenuScreen extends JFrame implements ActionListener {
         setSize(800, 600);
         setLocationRelativeTo(null);
         setVisible(true);
-
 
     }
 

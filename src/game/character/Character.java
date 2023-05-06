@@ -3,6 +3,7 @@ package game.character;
 import city.cs.engine.*;
 import city.cs.engine.Shape;
 import game.GameSaverLoader;
+import game.MenuTimer;
 import org.jbox2d.common.Timer;
 import org.jbox2d.common.Vec2;
 
@@ -10,6 +11,8 @@ import static game.GameSaverLoader.loadedCoins;
 import static game.GameSaverLoader.loadedLives;
 
 public class Character extends Walker {
+
+    public boolean end = false;
 
     public static int lives = 3;
 
@@ -98,7 +101,9 @@ public class Character extends Walker {
             setLives(loadedLives);
             setCoins(loadedCoins);
 
+
         }
+
     }
 
 
@@ -147,8 +152,6 @@ public class Character extends Walker {
     public int getCharacterHalfHeight() {
         return characterHalfHeight;
     }
-
-
 
 
 

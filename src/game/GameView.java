@@ -72,8 +72,12 @@ public class GameView extends UserView {
         }
         if (character.getLives() == 0){
             g.drawImage(gameOver,0,0,800,600,this);
+            getWorld().stop();
+            if(character.end == false){
+                new MenuTimer();
+                character.end = true;
 
-
+            }
         }
 
         if(Character.getCoins() == 30){

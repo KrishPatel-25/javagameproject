@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 public class Game {
 
 
-
+    public static JFrame frame;
 
     /** Initialise a new Game. */
     public Game() {
@@ -42,7 +42,7 @@ public class Game {
 
         //4. create a Java window (frame) and add the game
         //   view to it
-        final JFrame frame = new JFrame("City Game");
+        frame = new JFrame("Mario Remix");
         frame.add(view);
         frame.addKeyListener(new CharacterController(world.getCharacter()));
 
