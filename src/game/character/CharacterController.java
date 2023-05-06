@@ -1,10 +1,14 @@
 package game.character;
 
 import city.cs.engine.BodyImage;
+import game.GameSaverLoader;
 import org.jbox2d.common.Timer;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+
+import static game.GameSaverLoader.fileName;
 
 public class CharacterController implements KeyListener {
 
@@ -27,6 +31,14 @@ public class CharacterController implements KeyListener {
             walkingSpeed = 8;
 
     }
+        if(code == KeyEvent.VK_Y) {
+            try {
+                GameSaverLoader.save(fileName);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
+        }
 
         if (code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT) {
             character.startWalking(-walkingSpeed);

@@ -24,19 +24,20 @@ public class GameWorld extends World {
 
     public GameWorld() {
         super();
+        new GameTimer();
 
 
         // make an empty game world
         World world = new World();
 
-        try {
-            gameMusic = new SoundClip("data/backgroundMusic.wav");   // Open an audio input stream
-            gameMusic.loop();                              // Set it to continous playback (looping)
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            //code in here will deal with any errors
-            //that might occur while loading/playing sound
-            System.out.println(e);
-        }
+//        try {
+//            gameMusic = new SoundClip("data/backgroundMusic.wav");   // Open an audio input stream
+//            gameMusic.loop();                              // Set it to continous playback (looping)
+//        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+//            //code in here will deal with any errors
+//            //that might occur while loading/playing sound
+//            System.out.println(e);
+//        }
 
 
         // make the ground
@@ -129,7 +130,7 @@ public class GameWorld extends World {
        Shape characterShape = new BoxShape(1, 2);
         character = new Character(this, characterShape);
         character.setPosition(new Vec2(5, 25));
-        character.setCoins(0);
+//        character.setCoins(0);
 
 //        make koopa
 

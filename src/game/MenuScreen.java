@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class MenuScreen extends JFrame implements ActionListener {
 
@@ -93,6 +94,17 @@ public class MenuScreen extends JFrame implements ActionListener {
         if (e.getSource() == playButton) {
             setVisible(false);
             new Game();
+        }
+
+
+        if (e.getSource() == loadButton) {
+            setVisible(false);
+            try {
+                GameSaverLoader.load("saver.txt");
+            } catch (IOException ex) {
+                System.out.println("Save not found");
+                new Game();
+            }
         }
 
         if (e.getSource() == quitButton) {

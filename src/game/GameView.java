@@ -47,8 +47,8 @@ public class GameView extends UserView {
 
         g.drawImage(coinSpin, 725, 0, 40, 40, this);
         g.setFont(new Font(Font.SERIF, Font.ITALIC, 25));
-        g.drawString(""+ character.coins, 775,28);
-
+        g.drawString(""+ character.getCoins(), 775,28);
+        g.drawString(""+ GameTimer.getTimer(), 775,38);
 
 
 
@@ -76,7 +76,7 @@ public class GameView extends UserView {
 
         }
 
-        if(Character.coins == 30){
+        if(Character.getCoins() == 30){
             g.drawImage(winner,0,0,800,600,this);
 
 

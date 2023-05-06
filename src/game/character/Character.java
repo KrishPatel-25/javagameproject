@@ -2,11 +2,15 @@ package game.character;
 
 import city.cs.engine.*;
 import city.cs.engine.Shape;
+import game.GameSaverLoader;
 import org.jbox2d.common.Timer;
+
+import static game.GameSaverLoader.loadedCoins;
+import static game.GameSaverLoader.loadedLives;
 
 public class Character extends Walker {
 
-    public int lives = 3;
+    public static int lives = 3;
 
     public static int coins = 0;
 
@@ -42,10 +46,7 @@ public class Character extends Walker {
         this.boostTimer = boostTimer;
     }
 
-    public int getCoins() {
-        return coins;
 
-    }
 
     private boolean jumpBoost = false;
 
@@ -66,12 +67,6 @@ public class Character extends Walker {
         this.jumpingSpeed = jumpingSpeed;
     }
 
-
-
-
-    public void setCoins(int coins) {
-        this.coins = coins;
-    }
 
 
     private static final BodyImage image =
@@ -98,17 +93,33 @@ public class Character extends Walker {
         previousCharacterFacing = CharacterFacing.RIGHT;
         this.boostTimer = new Timer();
         this.previousJumpSpeed = jumpingSpeed;
+        if(GameSaverLoader.loadedGame){
+            setLives(loadedLives);
+            setCoins(loadedCoins);
+
+        }
+    }
+
+    public static int getCharacterPosition(){
+
+
     }
 
 
-
-
-    public int getLives() {
+    public static int getLives() {
         return lives;
     }
 
     public void setLives(int lives) {
         this.lives = lives;
+    }
+
+    public static int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
     }
 
     public CharacterFacing getPreviousCharacterFacing() {
@@ -138,6 +149,9 @@ public class Character extends Walker {
     public int getCharacterHalfHeight() {
         return characterHalfHeight;
     }
+
+
+
 
 
 }
