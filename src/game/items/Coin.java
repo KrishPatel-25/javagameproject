@@ -3,8 +3,23 @@ package game.items;
 import city.cs.engine.*;
 import game.character.Character;
 import org.jbox2d.common.Vec2;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 
 public class Coin extends StaticBody {
+
+    private static SoundClip coinSound;
+
+    static {
+        try {
+            coinSound = new SoundClip("data/coinSound.wav");
+            System.out.println("Loading coin sound");
+        } catch (UnsupportedAudioFileException|IOException|LineUnavailableException e) {
+            System.out.println(e);
+        }
+    }
+
 
 
     public Coin(World w, Shape coinShape,Character character, float x, float y, float r) {
@@ -19,7 +34,15 @@ public class Coin extends StaticBody {
 
     }
 
+
     private Shape coinShape;
+
+    @Override
+    public void destroy()
+    {
+        coinSound.play();
+        super.destroy();
+    }
 
 
 }

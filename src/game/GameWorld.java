@@ -9,19 +9,35 @@ import game.entities.goomba.Goomba;
 import game.entities.mushrooms.Mushroom;
 import game.items.Coin;
 import org.jbox2d.common.Vec2;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 
 
 public class GameWorld extends World {
 
     private Character character;
+
+    private SoundClip gameMusic;
+
+
     public GameWorld() {
         super();
 
 
-
-
-        //1. make an empty game world
+        // make an empty game world
         World world = new World();
+
+        try {
+            gameMusic = new SoundClip("data/backgroundMusic.wav");   // Open an audio input stream
+            gameMusic.loop();                              // Set it to continous playback (looping)
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            //code in here will deal with any errors
+            //that might occur while loading/playing sound
+            System.out.println(e);
+        }
+
 
         // make the ground
         Shape shape = new BoxShape(500, 0.5f);
@@ -32,6 +48,7 @@ public class GameWorld extends World {
         //make wall
         Platform wall = new Platform(22, 200,this);
         wall.getPlatform().setPosition(new Vec2(-22, 10));
+
 
 
 

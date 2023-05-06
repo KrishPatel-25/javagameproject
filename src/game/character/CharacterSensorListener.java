@@ -42,6 +42,7 @@ public class CharacterSensorListener implements SensorListener {
                     return;
 
 
+
                 }
 
                 if(character.getCharacterFacing() == CharacterFacing.RIGHT) {
@@ -58,6 +59,9 @@ public class CharacterSensorListener implements SensorListener {
         Body body = sensorEvent.getSensor().getBody();
         if(body instanceof Character character){
             character.setSensorContacts(character.getSensorContacts()-1);
+
+
+
         }
 
     }
