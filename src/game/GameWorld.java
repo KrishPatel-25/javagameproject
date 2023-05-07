@@ -45,6 +45,19 @@ public class GameWorld extends World {
         }
 
 
+        // make the character
+        Shape characterShape = new BoxShape(1, 2);
+        character = new Character(this, characterShape);
+
+        if(GameSaverLoader.loadedGame){
+            character.setPosition(new Vec2(loadedX,loadedY));
+        }
+        else{
+            character.setPosition(new Vec2(5, 25));
+        }
+
+
+
         // make the ground
         Shape shape = new BoxShape(500, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
@@ -54,6 +67,10 @@ public class GameWorld extends World {
         //make wall
         Platform wall = new Platform(22, 200, this);
         wall.getPlatform().setPosition(new Vec2(-22, 10));
+
+        Platform wall2 = new Platform(22, 200, this);
+        wall2.addImage(new BodyImage("data/transparent.png"));
+        wall2.getPlatform().setPosition(new Vec2(300, 10));
 
 
         // make a suspended platform
@@ -123,16 +140,6 @@ public class GameWorld extends World {
         platform104.addImage(new BodyImage("data/tunnel.png", 5));
 
 
-        // make the character
-        Shape characterShape = new BoxShape(1, 2);
-        character = new Character(this, characterShape);
-
-        if(GameSaverLoader.loadedGame){
-            character.setPosition(new Vec2(loadedX,loadedY));
-        }
-        else{
-            character.setPosition(new Vec2(5, 25));
-        }
 
 
 //        character.setCoins(0);

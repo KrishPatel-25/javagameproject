@@ -14,7 +14,7 @@ public class GameView extends UserView {
 
 
 
-    private final Image background;
+    private Image background;
     private final Character character;
 
 
@@ -22,10 +22,12 @@ public class GameView extends UserView {
     private Image heart = new ImageIcon("data/heart.gif").getImage();
     private Image lostHeart = new ImageIcon("data/lost heart.gif").getImage();
 
-    private Image gameOver = new ImageIcon("data/gameover.gif").getImage();
+    private Image gameOver = new ImageIcon("data/gameOver.gif").getImage();
     private Image winner = new ImageIcon("data/winner.gif").getImage();
 
     private Image rain = new ImageIcon("data/rain.gif").getImage();
+
+    private Image timer = new ImageIcon("data/timer.png").getImage();
 
     public GameView(GameWorld world, int width, int height) {
         super(world, width, height);
@@ -46,9 +48,14 @@ public class GameView extends UserView {
 //        g.drawImage(rain, 20, 0, 50, 600, this);
 
         g.drawImage(coinSpin, 725, 0, 40, 40, this);
+        g.setColor(Color.WHITE);
         g.setFont(new Font(Font.SERIF, Font.ITALIC, 25));
         g.drawString(""+ character.getCoins(), 775,28);
-        g.drawString(""+ GameTimer.getTimer(), 775,38);
+
+        g.drawImage(timer,600,0,40,40,this);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font(Font.SERIF, Font.ITALIC, 25));
+        g.drawString(""+ GameTimer.getTimer(), 665,28);
 
 
 
@@ -80,18 +87,16 @@ public class GameView extends UserView {
             }
         }
 
-        if(Character.getCoins() == 30){
-            g.drawImage(winner,0,0,800,600,this);
-
+        if(Character.getCoins() == 15){
+            background = new ImageIcon("data/nightbackground.png").getImage();
 
         }
 
-//    protected void updateBackground(Graphics2D g) {
-//        g.drawImage(background, 0,0,this);
-//
-//
-//    }
+        if(Character.getCoins() == 30){
+            g.drawImage(winner,0,0,800,600,this);
+            getWorld().stop();
 
+        }
 
     }
 }

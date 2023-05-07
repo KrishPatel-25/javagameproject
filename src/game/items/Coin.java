@@ -14,7 +14,6 @@ public class Coin extends StaticBody {
     static {
         try {
             coinSound = new SoundClip("data/coinSound.wav");
-            System.out.println("Loading coin sound");
         } catch (UnsupportedAudioFileException|IOException|LineUnavailableException e) {
             System.out.println(e);
         }
