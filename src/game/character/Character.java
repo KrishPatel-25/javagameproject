@@ -8,6 +8,15 @@ import org.jbox2d.common.Timer;
 import static game.mainGame.GameSaverLoader.loadedCoins;
 import static game.mainGame.GameSaverLoader.loadedLives;
 
+/**
+ * @author      Krish, Patel, Krish.Patel.2@city.ac.uk
+ * @version     v1
+ * @since       v1
+ *
+ * Character Class sets out all the details about the character - how many lives he has, how many coins he starts with and what direction he faces when spawned into the game world
+ *
+ */
+
 public class Character extends Walker {
 
     public boolean end = false;
@@ -106,6 +115,15 @@ public class Character extends Walker {
 
 
 
+
+
+    /**
+     * fetches the lives of the character.
+     * <p>
+     * This method fetches the previously stored lives which the character had - important for saving or creating a new world game
+     *
+     * @return the lives which had been previously stored
+     */
 
     public static int getLives() {
         return lives;

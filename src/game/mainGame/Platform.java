@@ -5,6 +5,16 @@ import city.cs.engine.Shape;
 import city.cs.engine.StaticBody;
 import city.cs.engine.World;
 
+/**
+ * @author      Krish, Patel, Krish.Patel.2@city.ac.uk
+ * @version     v1
+ * @since       v1
+ *
+ *  Platform Class is the default layout for all platforms in the game, such as the ground, sky platforms and the walls.
+ *
+ */
+
+
 public class Platform extends StaticBody {
 
     private final Shape platformShape;

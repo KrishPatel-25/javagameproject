@@ -9,6 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * @author      Krish, Patel, Krish.Patel.2@city.ac.uk
+ * @version     v1
+ * @since       v1
+ *
+ *  MenuScreen class is the UI that opens which has 4 buttons which you can interact with - Start Game, Load Game, How to Play and Quit Game
+ *
+ */
+
+
 public class MenuScreen extends JFrame implements ActionListener {
 
     private final JPanel MenuScreen;
@@ -118,6 +128,8 @@ public class MenuScreen extends JFrame implements ActionListener {
             howToPlayScreen = new JPanel();
             howToPlayScreen.setPreferredSize(new Dimension(800, 600));
             howToPlayScreen.setLayout(new BoxLayout(howToPlayScreen, BoxLayout.Y_AXIS));
+
+
 
 
             controls = new JLabel("To jump use W, UP Arrow or Space");

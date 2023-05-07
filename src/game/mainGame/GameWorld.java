@@ -18,6 +18,16 @@ import java.io.IOException;
 import static game.mainGame.GameSaverLoader.*;
 
 
+/**
+ * @author      Krish, Patel, Krish.Patel.2@city.ac.uk
+ * @version     v1
+ * @since       v1
+ *
+ * GameWorld Class creates the world all entities will spawn in, this is the backbone of the whole game and it includes everything I made such as characters, enemies and platforms.
+ *
+ */
+
+
 public class GameWorld extends World {
 
     private static Character character;

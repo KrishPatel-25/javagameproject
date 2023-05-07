@@ -9,6 +9,16 @@ import java.io.IOException;
 
 import static game.mainGame.GameSaverLoader.fileName;
 
+/**
+ * @author      Krish, Patel, Krish.Patel.2@city.ac.uk
+ * @version     v1
+ * @since       v1
+ *
+ *  CharacterController Class is the main class for controlling the character such as making him move and what buttons to press to make him move
+ *
+ */
+
+
 public class CharacterController implements KeyListener {
 
    public int walkingSpeed = 5;

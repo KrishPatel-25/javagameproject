@@ -8,6 +8,16 @@ import game.character.Character;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author      Krish, Patel, Krish.Patel.2@city.ac.uk
+ * @version     v1
+ * @since       v1
+ *
+ *  GameView Class includes all visual things you see when you run the game - such as hearts, coins and time but also things in the background such as the game's background
+ *
+ */
+
+
 public class GameView extends UserView {
 
 

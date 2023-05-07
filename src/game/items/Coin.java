@@ -9,6 +9,13 @@ import java.io.IOException;
 
 public class Coin extends StaticBody {
 
+
+    /**
+
+     A static variable that holds a SoundClip object for playing a sound effect
+     associated with collecting coins.
+     @see SoundClip
+     */
     private static SoundClip coinSound;
 
     static {

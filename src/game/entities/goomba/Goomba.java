@@ -4,6 +4,16 @@ import city.cs.engine.Shape;
 import org.jbox2d.common.Timer;
 import org.jbox2d.common.Vec2;
 
+/**
+ * @author      Krish, Patel, Krish.Patel.2@city.ac.uk
+ * @version     v1
+ * @since       v1
+ *
+ *  Goomba Class is the main class for the enemy Goomba, which includes the speed of goomba, how far he patrols and his hitbox
+ *
+ */
+
+
 public class Goomba extends Walker implements StepListener{
 
     private int sensorContacts;

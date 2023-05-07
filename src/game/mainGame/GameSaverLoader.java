@@ -23,6 +23,20 @@ public class GameSaverLoader {
 
 
     // Method for saving the current game
+
+    /**
+
+     Saves the current game statistics and character position to a file with the
+     specified file name in the format of "lives,coins,timer,x_position,y_position".
+     @param fileName the name of the file to save the game stats to
+     @throws IOException if there is an error writing to the file
+     @see FileWriter
+     @see GameWorld
+     @see Character
+     @see GameTimer
+     */
+
+
     public static void save(String fileName) throws IOException {
         boolean append = true;
         GameWorld.getCharacterPosition();

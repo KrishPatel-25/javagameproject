@@ -4,6 +4,16 @@ import city.cs.engine.*;
 import game.character.CharacterFacing;
 import org.jbox2d.common.Timer;
 
+/**
+ * @author      Krish, Patel, Krish.Patel.2@city.ac.uk
+ * @version     v1
+ * @since       v1
+ *
+ *  Koopa Class is the main class for Koopa, which includes the speed of koopa, how far he goes, his hitbox and when he turns into a shell and also the different walking images
+ *
+ */
+
+
 public class Koopa extends Walker implements StepListener {
 
     private Timer collisionTimer;
