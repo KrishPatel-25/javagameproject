@@ -1,11 +1,9 @@
-package game;
+package game.mainGame;
 
 
-import city.cs.engine.StepEvent;
-import city.cs.engine.StepListener;
 import city.cs.engine.UserView;
+import game.UI.MenuTimer;
 import game.character.Character;
-import game.items.Coin;
 
 import javax.swing.*;
 import java.awt.*;

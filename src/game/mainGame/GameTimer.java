@@ -1,21 +1,21 @@
-package game;
+package game.mainGame;
 
-import game.character.Character;
+import game.mainGame.GameSaverLoader;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static game.GameSaverLoader.*;
+import static game.mainGame.GameSaverLoader.*;
 
 public class GameTimer implements ActionListener {
 
 
-    // Variable initialisation
+
     public static int timer = 0;
     public static Timer gameTimer;
 
-    // Constructor for LevelTimer
+
     public GameTimer() {
         if(GameSaverLoader.loadedGame){
             timer = loadedTimer;

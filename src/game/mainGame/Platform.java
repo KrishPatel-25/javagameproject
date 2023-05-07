@@ -1,4 +1,4 @@
-package game;
+package game.mainGame;
 
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;

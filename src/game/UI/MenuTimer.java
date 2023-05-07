@@ -1,7 +1,5 @@
-package game;
-import game.character.Character;
+package game.UI;
 
-import static game.GameSaverLoader.loadedTimer;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,14 +1,13 @@
 package game.character;
 
 import city.cs.engine.BodyImage;
-import game.GameSaverLoader;
-import org.jbox2d.common.Timer;
+import game.mainGame.GameSaverLoader;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
-import static game.GameSaverLoader.fileName;
+import static game.mainGame.GameSaverLoader.fileName;
 
 public class CharacterController implements KeyListener {
 

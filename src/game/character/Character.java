@@ -2,13 +2,11 @@ package game.character;
 
 import city.cs.engine.*;
 import city.cs.engine.Shape;
-import game.GameSaverLoader;
-import game.MenuTimer;
+import game.mainGame.GameSaverLoader;
 import org.jbox2d.common.Timer;
-import org.jbox2d.common.Vec2;
 
-import static game.GameSaverLoader.loadedCoins;
-import static game.GameSaverLoader.loadedLives;
+import static game.mainGame.GameSaverLoader.loadedCoins;
+import static game.mainGame.GameSaverLoader.loadedLives;
 
 public class Character extends Walker {
 

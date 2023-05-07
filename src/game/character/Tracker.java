@@ -2,8 +2,7 @@ package game.character;
 
 import city.cs.engine.StepEvent;
 import city.cs.engine.StepListener;
-import game.GameView;
-import game.character.Character;
+import game.mainGame.GameView;
 import org.jbox2d.common.Vec2;
 
 public class Tracker implements StepListener {

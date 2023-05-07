@@ -1,4 +1,6 @@
-package game;
+package game.mainGame;
+
+import game.mainGame.GameView;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

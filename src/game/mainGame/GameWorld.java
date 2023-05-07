@@ -1,4 +1,4 @@
-package game;
+package game.mainGame;
 
 
 import city.cs.engine.*;
@@ -15,7 +15,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import java.io.IOException;
 
-import static game.GameSaverLoader.*;
+import static game.mainGame.GameSaverLoader.*;
 
 
 public class GameWorld extends World {
@@ -39,8 +39,7 @@ public class GameWorld extends World {
             gameMusic = new SoundClip("data/backgroundMusic.wav");   // Open an audio input stream
             gameMusic.loop();                              // Set it to continous playback (looping)
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            //code in here will deal with any errors
-            //that might occur while loading/playing sound
+
             System.out.println(e);
         }
 

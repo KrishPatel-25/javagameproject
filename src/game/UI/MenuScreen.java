@@ -1,4 +1,7 @@
-package game;
+package game.UI;
+
+import game.mainGame.Game;
+import game.mainGame.GameSaverLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,10 +32,12 @@ public class MenuScreen extends JFrame implements ActionListener {
 
         MenuScreen.add(Box.createVerticalStrut(20));
 
+        // add the different buttons
+
         playButton = new JButton("Play Game");
-        playButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
+        playButton.setFont(new Font("Font.SERIF", Font.BOLD, 30));
         playButton.setBackground(new Color(0, 200, 255));
-        playButton.setOpaque(true);
+        playButton.setOpaque(true); // Make the button background opaque
         playButton.setContentAreaFilled(true); // Make the content area transparent
         playButton.setBorderPainted(true); // Remove the button border
         playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -42,11 +47,11 @@ public class MenuScreen extends JFrame implements ActionListener {
         MenuScreen.add(Box.createVerticalStrut(20));
 
         loadButton = new JButton("Load Game");
-        loadButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
+        loadButton.setFont(new Font("Font.SERIF", Font.BOLD, 18));
         loadButton.setBackground(new Color(0, 255, 0));
-        loadButton.setOpaque(true); // Make the button background opaque
-        loadButton.setContentAreaFilled(true); // Make the content area filled
-        loadButton.setBorderPainted(true); // Paint the button border
+        loadButton.setOpaque(true);
+        loadButton.setContentAreaFilled(true);
+        loadButton.setBorderPainted(true);
         loadButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loadButton.addActionListener(this);
         MenuScreen.add(loadButton);
@@ -54,11 +59,11 @@ public class MenuScreen extends JFrame implements ActionListener {
         MenuScreen.add(Box.createVerticalStrut(20));
 
         howToPlayButton = new JButton("How to Play");
-        howToPlayButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
+        howToPlayButton.setFont(new Font("Font.SERIF", Font.BOLD, 18));
         howToPlayButton.setBackground(new Color(255, 100, 25));
-        howToPlayButton.setOpaque(true); // Make the button background opaque
-        howToPlayButton.setContentAreaFilled(true); // Make the content area filled
-        howToPlayButton.setBorderPainted(true); // Paint the button border
+        howToPlayButton.setOpaque(true);
+        howToPlayButton.setContentAreaFilled(true);
+        howToPlayButton.setBorderPainted(true);
         howToPlayButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         howToPlayButton.addActionListener(this);
         MenuScreen.add(howToPlayButton);
@@ -66,11 +71,11 @@ public class MenuScreen extends JFrame implements ActionListener {
         MenuScreen.add(Box.createVerticalStrut(20));
 
         quitButton = new JButton("Quit Game");
-        quitButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
+        quitButton.setFont(new Font("Font.SERIF", Font.BOLD, 18));
         quitButton.setBackground(new Color(255, 0, 0));
-        quitButton.setOpaque(true); // Make the button background opaque
-        quitButton.setContentAreaFilled(true); // Make the content area filled
-        quitButton.setBorderPainted(true); // Paint the button border
+        quitButton.setOpaque(true);
+        quitButton.setContentAreaFilled(true);
+        quitButton.setBorderPainted(true);
         quitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         quitButton.addActionListener(this);
         MenuScreen.add(quitButton);
@@ -117,26 +122,26 @@ public class MenuScreen extends JFrame implements ActionListener {
 
             controls = new JLabel("To jump use W, UP Arrow or Space");
             controls.setAlignmentX(Component.CENTER_ALIGNMENT);
-            controls.setFont(new Font("Arial", Font.BOLD, 25));
+            controls.setFont(new Font("Font.SERIF", Font.BOLD, 25));
             howToPlayScreen.add(controls);
 
             controls = new JLabel("To go left use A or LEFT Arrow");
             controls.setAlignmentX(Component.CENTER_ALIGNMENT);
-            controls.setFont(new Font("Arial", Font.BOLD, 25));
+            controls.setFont(new Font("Font.SERIF", Font.BOLD, 25));
             howToPlayScreen.add(controls);
 
             controls = new JLabel("To go right use D or RIGHT Arrow");
             controls.setAlignmentX(Component.CENTER_ALIGNMENT);
-            controls.setFont(new Font("Arial", Font.BOLD, 25));
+            controls.setFont(new Font("Font.SERIF", Font.BOLD, 25));
             howToPlayScreen.add(controls);
 
             controls = new JLabel("To sprint hold SHIFT");
             controls.setAlignmentX(Component.CENTER_ALIGNMENT);
-            controls.setFont(new Font("Arial", Font.BOLD, 25));
+            controls.setFont(new Font("Font.SERIF", Font.BOLD, 25));
             howToPlayScreen.add(controls);
 
             goBack = new JButton("Go Back");
-            goBack.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
+            goBack.setFont(new Font("Font.SERIF", Font.BOLD, 18));
             goBack.setBackground(new Color(244, 194, 194));
             goBack.setAlignmentX(Component.CENTER_ALIGNMENT);
             goBack.addActionListener(this);

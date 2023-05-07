@@ -1,6 +1,6 @@
-package game;
+package game.mainGame;
 
-import city.cs.engine.*;
+import game.UI.MenuScreen;
 import game.character.CharacterController;
 import game.character.Tracker;
 

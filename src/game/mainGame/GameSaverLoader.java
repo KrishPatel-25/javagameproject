@@ -1,4 +1,4 @@
-package game;
+package game.mainGame;
 
 
 import game.character.Character;
@@ -7,15 +7,14 @@ import java.io.*;
 
 public class GameSaverLoader {
 
-    // Variable initialisation
     public static int loadedLives;
     public static int loadedCoins;
-    static int loadedTimer;
+    public static int loadedTimer;
     public static float loadedX;
     public static float loadedY;
     public static boolean loadedGame = false;
 
-    // Initialises save file name and object
+    // Initialises save file name
     static public String fileName = "data/saver.txt";
     static File saveFile = new File(fileName);
 
@@ -60,19 +59,19 @@ public class GameSaverLoader {
 
                 line = reader.readLine();
             }
-            // Assigns the saved data to variables to be passed into
+
             loadedLives = lives;
             loadedCoins = coins;
             loadedTimer = timer;
             loadedX = x;
             loadedY= y;
-            // Sets to true so GameLevel knows we are using imported stats
+            // Sets to true so GameLevel knows we are using the saved version
             loadedGame = true;
 
             new Game();
 
         }
-        // Closes file after done
+        // Closes file after previous save has been loaded
         finally {
             if (reader != null) {
                 reader.close();
